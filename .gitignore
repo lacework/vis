@@ -5,6 +5,9 @@ test/
 node_modules
 npm-debug.log
 
+# dist
+dist
+
 # ide or system files
 .idea
 .c9

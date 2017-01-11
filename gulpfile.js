@@ -196,15 +196,19 @@ gulp.task('minify', ['bundle-js'], function (cb) {
 
 gulp.task('bundle', ['bundle-js', 'bundle-js-individual', 'bundle-css', 'bundle-css-individual', 'copy']);
 
-// read command line arguments --bundle and --minify
+gulp.task('quick', ['bundle-js']);
+
+// read command line arguments --bundle and --minify and --quick
 var bundle = 'bundle' in argv;
 var minify = 'minify' in argv;
+var quick  = 'quick'  in argv; // only compiles bundle i.e. vis.js into dist
 var watchTasks = [];
-if (bundle || minify) {
+if (bundle || minify || quick) {
   // do bundling and/or minifying only when specified on the command line
   watchTasks = [];
   if (bundle) watchTasks.push('bundle');
   if (minify) watchTasks.push('minify');
+  if (quick)  watchTasks.push('quick');
 }
 else {
   // by default, do both bundling and minifying
