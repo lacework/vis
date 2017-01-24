@@ -58,6 +58,10 @@
     var options = {interaction:{hover:true}};
     var network = new vis.Network(container, data, options);
 
+    network.on("hoverNode", function (params) {
+        console.log('hoverNode Event:', params);
+    });
+
 </script>
 </body>
 </html>
