@@ -33,17 +33,10 @@
         {id: 1,  shape: 'circularOverImage', image: DIR2 + 'type.svg', 
           circularImage: DIR + '1.png',
           ovrImgRatio: 0.6,
-          label: "Click me more info...",
-          onLabelClick: function(options) { 
-            let label = options.label;
-            alert('You have clicked: ' + label);
-          }
+          label: "Click me for click event...",
         },
         {id: 2,  shape: 'circularImage', image: DIR + '2.png',
           label: 'Click to open google.com',
-          onLabelClick: function(options) {
-            window.location.href = "http://google.com";
-          }
         },
         {id: 3,  shape: 'circularImage', image: DIR + '3.png'},
         {id: 4,  shape: 'circularImage', image: DIR + '4.png', label:"pictures by this guy!"},
@@ -99,9 +92,13 @@
         },
         edges: {
           color: 'lightgray'
-        }
+        },
       };
       network = new vis.Network(container, data, options);
+
+      network.on('labelClick', function(node) {
+        console.log('labelClick event on ' + node.label + ': ', node);
+      });
     }
   </script>
 </head>
