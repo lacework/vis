@@ -25,14 +25,13 @@
         {
             id: 1, label: 'Node 1, tooltip click', 
             title: 'Click for alert!', 
-            onTooltipClick: function(evt, nodeId) { 
-                console.info(evt);
-                alert('You have clicked: ' + nodeId);
+            onTooltipClick: function(node) { 
+                alert('You have clicked: ' + node.id);
             }
         },
         {
             id: 2, label: 'Node 2, tooltip click', title: 'Go to Google',
-            onTooltipClick: function(evt) {
+            onTooltipClick: function(node) {
                 window.location.href = "http://google.com";
             }
         },
