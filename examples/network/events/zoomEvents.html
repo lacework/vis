@@ -51,12 +51,22 @@
         nodes: nodes,
         edges: edges
     };
-    var options = {interaction:{hover:true, zoomFactor: 2}};
+    var options = {interaction:{hover:true, zoomFactor: {in: 5, out: 2}}};
     var network = new vis.Network(container, data, options);
+    var centerPos = undefined;
 
     
     network.on("zoom", function (params) {
         document.getElementById('eventSpan').innerHTML = '<h2>zoom event:</h2>' + JSON.stringify(params, null, 4);
+        console.log('before: ', network.getViewPosition());
+        if(centerPos === undefined) { centerPos = network.getViewPosition() }
+        else { network.moveTo({position: centerPos}) }
+        console.log('after: ', network.getViewPosition());
+    });
+
+    network.on("dragEnd", function (params) {
+        // realign center as per user:
+        centerPos = network.getViewPosition();
     });
 
 </script>
