@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+<head>
+    <title>Network | Tooltip1 events</title>
+
+    <script type="text/javascript" src="../../../dist/vis.js"></script>
+    <link href="../../../dist/vis-network.min.css" rel="stylesheet" type="text/css"/>
+
+    <style type="text/css">
+        #mynetwork {
+            width: 600px;
+            height: 400px;
+            border: 1px solid lightgray;
+        }
+    </style>
+</head>
+<body>
+
+<div id="mynetwork"></div>
+<pre id="eventSpan"></pre>
+
+<script type="text/javascript">
+    // create an array with nodes
+    var nodes = new vis.DataSet([
+        {
+            id: 1, label: 'Node 1, tooltip click', 
+            title: 'Click for alert!', 
+            onTooltipClick: function(node) { 
+                alert('You have clicked: ' + node.id);
+            }
+        },
+        {
+            id: 2, label: 'Node 2, tooltip click', title: 'Go to Google',
+            onTooltipClick: function(node) {
+                window.location.href = "http://google.com";
+            }
+        },
+        {id: 3, label: 'Node 3', title: 'I have a popup!'},
+        {id: 4, label: 'Node 4', title: 'I have a popup!'},
+        {id: 5, label: 'Node 5', title: 'I have a popup!'}
+    ]);
+
+    // create an array with edges
+    var edges = new vis.DataSet([
+        {from: 1, to: 3},
+        {from: 1, to: 2},
+        {from: 2, to: 4},
+        {from: 2, to: 5}
+    ]);
+
+    // create a network
+    var container = document.getElementById('mynetwork');
+    var data = {
+        nodes: nodes,
+        edges: edges
+    };
+    var options = {interaction:{hover:true}};
+    var network = new vis.Network(container, data, options);
+
+    network.on("hoverNode", function (params) {
+        console.log('hoverNode Event:', params);
+    });
+
+</script>
+</body>
+</html>
