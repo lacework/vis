@@ -29,12 +29,17 @@
       var DIR = '../img/indonesia/';
       var DIR2 = '../img/cluster-images/'
       nodes = [
-        {id: 1,  shape: 'circularOverImage', // image: DIR2 + 'type.svg', 
+        {id: 1,  shape: 'circularOverImage', image: DIR2 + 'type.svg', 
           circularImage: DIR + '1.png',
           ovrImgRatio: 0.6,
-          label: "Circular Over Image",
+          label: "Circular Over Image-1",
         },
-        {id: 2,  shape: 'circularImage', image: DIR + '2.png'},
+        // test for undefined image urls:
+        {id: 2,  shape: 'circularOverImage', //image: DIR2 + 'type.svg', 
+          //circularImage: DIR + '2.png',
+          ovrImgRatio: 0.6,
+          label: "Circular Over Image-2",
+        },
         {id: 3,  shape: 'circularImage', image: DIR + '3.png'},
         {id: 4,  shape: 'circularImage', image: DIR + '4.png', label:"pictures by this guy!"},
         {id: 5,  shape: 'circularImage', image: DIR + '5.png'},
