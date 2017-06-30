@@ -198,7 +198,7 @@ gulp.task('bundle', ['bundle-js', 'bundle-js-individual', 'bundle-css', 'bundle-
 
 gulp.task('quick', ['bundle-js']);
 
-// read command line arguments --bundle and --minify and --quick
+// read command line arguments bundle / minify / quick
 var bundle = 'bundle' in argv;
 var minify = 'minify' in argv;
 var quick  = 'quick'  in argv; // only compiles bundle i.e. vis.js into dist
