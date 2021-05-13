@@ -133,13 +133,12 @@ gulp.task('bundle-js-individual', function (cb) {
       entry: item.entry,
       output: {
         library: 'vis',
-        libraryTarget: 'umd',
+        libraryTarget: 'commonjs2',
         path: DIST,
-        filename: item.filename,
+        filename: item.entry,
         sourcePrefix: '  '
       },
       module: webpackModule,
-      plugins: [ bannerPlugin, new webpack.optimize.UglifyJsPlugin() ],
       cache: true
     };
 
